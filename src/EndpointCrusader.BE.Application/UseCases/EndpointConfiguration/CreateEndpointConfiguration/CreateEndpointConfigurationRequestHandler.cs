@@ -3,7 +3,7 @@ using MediatR;
 
 namespace EndpointCrusader.BE.Application.UseCases.EndpointConfiguration.CreateEndpointConfiguration
 {
-    public class CreateEndpointConfigurationRequestHandler : IRequestHandler<CreateEndpointConfigurationRequest, bool>
+    public class CreateEndpointConfigurationRequestHandler : IRequestHandler<CreateEndpointConfigurationRequest, int>
     {
         private readonly IEndpointConfigurationRepository _endpointConfigurationRepository;
 
@@ -11,9 +11,9 @@ namespace EndpointCrusader.BE.Application.UseCases.EndpointConfiguration.CreateE
         {
             _endpointConfigurationRepository = endpointConfigurationRepository;
         }
-        public async Task<bool> Handle(CreateEndpointConfigurationRequest request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateEndpointConfigurationRequest request, CancellationToken cancellationToken)
         {
-            return await _endpointConfigurationRepository.CreateEndpointConfiguration(request.ToString());
+            return await _endpointConfigurationRepository.CreateEndpointConfiguration(request);
         }
     }
 }
